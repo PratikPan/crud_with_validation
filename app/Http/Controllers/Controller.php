@@ -30,7 +30,7 @@ class Controller extends BaseController
             'name' => 'required|regex:/^[a-zA-Z ]*$/',
             'mobile' => 'required|unique:users,mobile_no|regex:/^[0-9]*$/|min:10|max:10',
             'dob' => 'required|before:-21 years',
-            'image' => 'required|image|mimes:jpg|max:2048',
+            'image' => 'required|image|mimes:jpg|dimensions:width=512,height=512',
         ], [
             'name.required' => 'Name is required',
             'name.regex' => 'Only letters and space allowed',
@@ -42,7 +42,7 @@ class Controller extends BaseController
             'image.required' => 'Image is required',
             'image.image' => 'Only Image allowed',
             'image.mimes' => 'Only .jpg extension allowed',
-
+            'image.dimensions' => 'Only 512*512 pixels allowed',
         ]);
 
         if ($validator->fails()) {
